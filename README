@@ -1,0 +1,20 @@
+In order to have a full working application, you have to :
+	- pull docker image with postgres:alpin by using "docker pull postgres:alpine" 
+	- create a database with the same  name in the file "application.yml" in jdbc-url: ../dbName (demodb for this project)
+		- execute the commands bellow in a terminal :
+			- docker exec -it (your docker name or ID) bash
+			- psql -U postgres
+			- create database YourDbName (demoDb for this project)
+			- add users if u feel so (this way you can see your added user in 'localhost:8080/api/v1/person' after launching the project from your ide)
+	- run your docker images in another terminal with : 
+		- docker run --name ImageDockerName -e POSTGRES_PASSWORD=YourPassWord -d -p 5432:5432 postgres:alpine
+		- 5432 is the default port used by postgresql
+		- use also the same username and password ('postgres' and 'password' for this project)
+		- the port of your image docker have to be the same as the one in jdbc-url
+
+	PS: in case you wanted to connect to your database from outside the image docker use ->
+			- psql -h localhost -p 5432 -U postgres
+			- the terminal will ask for the password you set before ;)
+
+Enjoy !
+	
